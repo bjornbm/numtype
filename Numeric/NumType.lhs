@@ -46,6 +46,7 @@ instances (and possibly additional unidentified GHC extensions).
 >            , FunctionalDependencies
 >            , MultiParamTypeClasses
 >            , FlexibleInstances
+>            , DeriveDataTypeable
 > #-}
 
 > {- |
@@ -67,7 +68,7 @@ instances (and possibly additional unidentified GHC extensions).
 >   , Succ, Negate, Sum, Div, Mul
 >   -- Functions.
 >   , toNum, incr, decr, negate, (+), (-), (*), (/)
->   -- Data types.
+>   -- D)ata types.
 >   , Zero, Pos, Neg
 >   -- Type synonyms for convenience.
 >   , Pos1, Pos2, Pos3, Pos4, Pos5, Neg1, Neg2, Neg3, Neg4, Neg5
@@ -77,6 +78,7 @@ instances (and possibly additional unidentified GHC extensions).
 
 > import Prelude hiding ((*), (/), (+), (-), negate)
 > import qualified Prelude ((+), (-))
+> import Data.Typeable (Typeable)
 
 Use the same fixity for operators as the Prelude.
 
@@ -144,7 +146,7 @@ with 'Zero', which we allow to be used as both a positive and a
 negative number in the sense of the previously defined type classes.
 'Zero' corresponds to HList's 'HZero'.
 
-> data Zero
+> data Zero deriving Typeable
 > instance NumTypeI Zero where toNum _ = 0
 > instance PosTypeI Zero
 > instance NegTypeI Zero
@@ -152,7 +154,7 @@ negative number in the sense of the previously defined type classes.
 Next we define the "successor" type, here called 'Pos' (corresponding
 to HList's 'HSucc').
 
-> data Pos n
+> data Pos n deriving Typeable
 > instance (PosTypeI n) => NumTypeI (Pos n) where
 >   toNum _ = toNum (undefined :: n) Prelude.+ 1
 > instance (PosTypeI n) => PosTypeI (Pos n)
@@ -165,7 +167,7 @@ used solely at the type level.
 Finally we define the "predecessor" type used to represent negative
 numbers.
 
-> data Neg n
+> data Neg n deriving Typeable
 > instance (NegTypeI n) => NumTypeI (Neg n) where
 >   toNum _ = toNum (undefined :: n) Prelude.- 1
 > instance (NegTypeI n) => NegTypeI (Neg n)
