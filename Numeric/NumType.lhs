@@ -68,7 +68,7 @@ instances (and possibly additional unidentified GHC extensions).
 >   , Succ, Negate, Sum, Div, Mul
 >   -- Functions.
 >   , toNum, incr, decr, negate, (+), (-), (*), (/)
->   -- D)ata types.
+>   -- Data types.
 >   , Zero, Pos, Neg
 >   -- Type synonyms for convenience.
 >   , Pos1, Pos2, Pos3, Pos4, Pos5, Neg1, Neg2, Neg3, Neg4, Neg5
