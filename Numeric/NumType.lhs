@@ -257,7 +257,7 @@ Using the helper classes we can provide an instance of 'Sum' that
 satisfies its functional dependencies. We provide an instance of
 'Sum' in terms of 'Add' and 'Sub'.
 
-> instance (Add a b c, Sub c b a) => Sum a b c
+> instance (Add a b c, Sub c b a, Sub c a b) => Sum a b c
 
 
 = Division =
