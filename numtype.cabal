@@ -1,10 +1,10 @@
 Name:                numtype
-Version:             1.1.0
+Version:             1.1
 License:             BSD3
 License-File:        LICENSE
 Copyright:           Bjorn Buckwalter 2009-2014
 Author:              Bjorn Buckwalter
-Maintainer:          bjorn.buckwalter@gmail.com
+Maintainer:          bjorn@buckwalter.se
 Stability:           stable
 Homepage:            http://dimensional.googlecode.com/
 Synopsis:            Type-level (low cardinality) integers.
