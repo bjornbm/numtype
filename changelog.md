@@ -1,3 +1,13 @@
+1.2 (2016-05-10)
+----------------
+GHC 8.0.1 compatibility fix.
+
+*  Added superclass constraints to `Div` and `Mul` instances.
+
+I don't expect this to break any existing code but am updating
+the major version number just in case. Thanks to Ben Gamari for the patch.
+
+
 1.1 (2014-02)
 -------------
 GHC 7.8.1 compatibility fix.
