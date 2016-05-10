@@ -300,15 +300,18 @@ appropriate.
 
 > instance ( NegTypeI n, NegTypeI n'
 >          , Negate n p, Negate n' p'
->          , Div (Pos p) (Pos p') (Pos p''))
+>          , Div (Pos p) (Pos p') (Pos p'')
+>          , PosTypeI p'')
 >       => Div (Neg n) (Neg n') (Pos p'')
 > instance ( NegTypeI n, Negate n p'
 >          , Div (Pos p) (Pos p') (Pos p'')
->          , Negate (Pos p'') (Neg n''))
+>          , Negate (Pos p'') (Neg n'')
+>          , PosTypeI p)
 >       => Div (Pos p) (Neg n) (Neg n'')
 > instance ( NegTypeI n, Negate n p'
 >          , Div (Pos p') (Pos p) (Pos p'')
->          , Negate (Pos p'') (Neg n''))
+>          , Negate (Pos p'') (Neg n'')
+>          , PosTypeI p)
 >       => Div (Neg n) (Pos p) (Neg n'')
 
 
@@ -326,8 +329,8 @@ Providing instances for the 'Mul' class is really easy thanks to
 the 'Div' class having the functional dependency "c b -> a".
 
 > instance (NumTypeI n) => Mul n Zero Zero
-> instance (PosTypeI p, Div c (Pos p) a) => Mul a (Pos p) c
-> instance (NegTypeI n, Div c (Neg n) a) => Mul a (Neg n) c
+> instance (NumTypeI a, NumTypeI c, PosTypeI p, Div c (Pos p) a) => Mul a (Pos p) c
+> instance (NumTypeI a, NumTypeI c, NegTypeI n, Div c (Neg n) a) => Mul a (Neg n) c
 
 
 = Functions =
